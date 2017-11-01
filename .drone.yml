@@ -13,13 +13,8 @@ pipeline:
     service: backend
     region: us-east-1
     family: my-ecs-task
-    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
+    image_name: "969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api"
     image_tag: latest
-    environment_variables:
-      - DATABASE_URI=database uri
-    port_mappings:
-      - 3000 3000
-    memory: 128    
 
     #    privileged: true
     #    commands:
