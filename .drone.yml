@@ -19,7 +19,7 @@ pipeline:
     region: us-east-1
     family: backend
     image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
-    image_tag: ${DRONE_COMMIT_SHA:0:8}
+    image_tag: "${DRONE_COMMIT_SHA:0:8}"
     port_mappings:
       - 3000 3000 
     memory: 128
