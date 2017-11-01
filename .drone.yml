@@ -5,10 +5,10 @@ pipeline:
       - npm install
       - npm test
   build:
-    image: docker
+    image: plugins/docker
     #    privileged: true
-    commands:
-      - sudo docker build --rm -t juanforo/movie-analyst-api .
+    #    commands:
+    #  - docker build --rm -t juanforo/movie-analyst-api .
         #    volumes:
         #- /var/run/docker.sock:/var/run/docker.sock
   deploy:
