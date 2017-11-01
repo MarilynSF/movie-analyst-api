@@ -6,9 +6,10 @@ pipeline:
       - npm test
   push:
     image: plugins/docker
+    username: juanforo
+    password: elpass
     repo: juanforo/movie-analyst-api
     tags: "${DRONE_COMMIT_SHA}"
-    secrets: [ usuario, contra ]
   deploy:
     image: docker
     command: docker run -d -p 3000:3000 juanforo/movie-analyst-api
