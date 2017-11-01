@@ -6,20 +6,35 @@ pipeline:
       - npm test
   build:
     image: plugins/docker
+  ecs:
+    image: peloton/drone-ecs
+    access_key: AKIAJ6MXUZVBKH67ZMKQ
+    secret_key: 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
+    service: backend
+    region: us-east-1
+    family: my-ecs-task
+    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
+    image_tag: ${DRONE_COMMIT_SHA:0:8}
+    environment_variables:
+      - DATABASE_URI=database uri
+    port_mappings:
+      - 3000 3000
+    memory: 128    
+
     #    privileged: true
     #    commands:
     #  - docker build --rm -t juanforo/movie-analyst-api .
         #    volumes:
         #- /var/run/docker.sock:/var/run/docker.sock
-  deploy:
-    image: joshdvir/drone-ecs-deploy
-    aws_access_key_id: AKIAJ6MXUZVBKH67ZMKQ
-    aws_secret_access_key: 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
-    service: backend
-    aws_region: us-east-1
-    cluster: movie-analyst
-    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api:${DRONE_COMMIT_SHA:0:8}
-        #  notify:
-        #    image: plugins/slack
-        #    channel: developers
-        #    username: drone
+        #  deploy:
+        #    image: joshdvir/drone-ecs-deploy
+        #    aws_access_key_id: AKIAJ6MXUZVBKH67ZMKQ
+        #    aws_secret_access_key: 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
+        #    service: backend
+        #    aws_region: us-east-1
+        #    cluster: movie-analyst
+        #    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api:${DRONE_COMMIT_SHA:0:8}
+        #        #  notify:
+        #        #    image: plugins/slack
+        #        #    channel: developers
+        #        #    username: drone
