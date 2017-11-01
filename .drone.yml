@@ -14,7 +14,7 @@ pipeline:
     region: us-east-1
     family: my-ecs-task
     image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
-    image_tag: ${DRONE_COMMIT_SHA:0:8}
+    image_tag: latest
     environment_variables:
       - DATABASE_URI=database uri
     port_mappings:
