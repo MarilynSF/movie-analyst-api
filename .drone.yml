@@ -6,11 +6,11 @@ pipeline:
       - npm test
   build:
     image: docker
-    privileged: true
+    #    privileged: true
     commands:
       - docker build --rm -t juanforo/movie-analyst-api .
-    volumes:
-     - /var/run/docker.sock:/var/run/docker.sock
+        #    volumes:
+        #- /var/run/docker.sock:/var/run/docker.sock
   deploy:
     image: peloton/drone-ecs
     access_key: AKIAJ6MXUZVBKH67ZMKQ
