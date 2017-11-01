@@ -12,3 +12,6 @@ pipeline:
     tags: "${DRONE_COMMIT_SHA}"
   deploy:
     image: juanforo/movie-analyst-api
+services:
+  api:
+    image: juanforo/movie-analyst-api
