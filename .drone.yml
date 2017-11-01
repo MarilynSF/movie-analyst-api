@@ -4,6 +4,7 @@ pipeline:
     commands:
       - npm install
       - npm test
+      - npm start
 
         #  notify:
         #    image: plugins/slack
