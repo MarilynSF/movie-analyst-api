@@ -6,6 +6,7 @@ pipeline:
       - npm test
   build:
     image: docker
+    privileged: true
     commands:
       - docker build --rm -t juanforo/movie-analyst-api .
     volumes:
