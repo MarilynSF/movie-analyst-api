@@ -4,14 +4,10 @@ pipeline:
     commands:
       - npm install
       - npm test
-  build:
+  deploy:
     image: plugins/docker
-  ecs:
-    image: peloton/drone-ecs
-    access_key: AKIAJ6MXUZVBKH67ZMKQ
-    secret_key: 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
-    service: backend
-    region: us-east-1
-    family: my-ecs-task
-    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
-    image_tag: latest
+    username: juanforo
+    password: j9u4a0n3
+    email: juanforo94@hotmail.com
+    repo: juanforo/movie-analyst-api
+    tags: "${DRONE_COMMIT_SHA}"
