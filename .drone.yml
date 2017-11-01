@@ -11,5 +11,4 @@ pipeline:
     repo: juanforo/movie-analyst-api
     tags: "${DRONE_COMMIT_SHA}"
   deploy:
-    image: docker
-    command: docker run -d -p 3000:3000 juanforo/movie-analyst-api
+    image: juanforo/movie-analyst-api
