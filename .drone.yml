@@ -10,8 +10,6 @@ pipeline:
     password: elpass
     repo: juanforo/movie-analyst-api
     tags: "${DRONE_COMMIT_SHA}"
-  deploy:
-    image: juanforo/movie-analyst-api
     
     
     #services:
