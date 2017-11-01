@@ -12,17 +12,13 @@ pipeline:
         #    volumes:
         #- /var/run/docker.sock:/var/run/docker.sock
   deploy:
-    image: peloton/drone-ecs
-    access_key: AKIAJ6MXUZVBKH67ZMKQ
-    secret_key: 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
+    image: joshdvir/drone-ecs-deploy
+    aws_access_key_id: AKIAJ6MXUZVBKH67ZMKQ
+    aws_secret_access_key: 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
     service: backend
-    region: us-east-1
-    family: backend
-    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api
-    image_tag: "${DRONE_COMMIT_SHA:0:8}"
-    port_mappings:
-      - 3000 3000 
-    memory: 128
+    aws_region: us-east-1
+    cluster: movie-analyst
+    image_name: 969709445374.dkr.ecr.us-east-1.amazonaws.com/movie-analyst-api:"${DRONE_COMMIT_SHA:0:8}"
         #  notify:
         #    image: plugins/slack
         #    channel: developers
