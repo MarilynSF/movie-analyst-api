@@ -1,7 +1,8 @@
-FROM mysql
-COPY ./ /opt/code
-WORKDIR /opt/code
+FROM mysql:5.7
 ENV MYSQL_ROOT_PASSWORD=mysecretpass
-MD /bin/sh -c 'mysql -u root -p $MYSQL_ROOT_PASSWORD < SQL/MySQL_DDL.sql
-CMD /bin/sh -c 'mysql -u root -p $MYSQL_ROOT_PASSWORD < SQL/MySQL_DML.sql
-EXPOSE 3306 3306 
+ENV MYSQL_DATABASE=movie_db
+ENV MYSQL_USER=movie_user
+ENV MYSQL_PASSWORD=movie
+EXPOSE 3306 
+COPY ./SQL/database.sql /docker-entrypoint-initdb.d/
+CMD ["mysqld"]

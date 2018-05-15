@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  db:
+    image: registry.hub.docker.com/juanforo/movie-analyst-db
+    restart: always
+    ports:
+      - "3306:3306"
+
+  backend:
+    image: registry.hub.docker.com/juanforo/movie-analyst-api
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - db
+
+  frontend:
+    image: registry.hub.docker.com/juanforo/movie-analyst-ui
+    restart: always
+    ports:
+      - "3030:3030"
+    links:
+      - backend
